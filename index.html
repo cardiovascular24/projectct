@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardio Thoracic</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome CSS for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      padding: 0px;
+    }
+    ::-webkit-scrollbar {
+    display: none;
+    } 
+    
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      background-color: #1BB193;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    fieldset {
+      border: none;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    legend {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    label {
+      flex:   0 0 150px; /* Set the width of labels */
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      flex: 1; /* Take up remaining space */
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-left: 10px; /* Add some spacing between label and input */
+      width: 50%;
+    }
+
+    button[type="button"] {
+      padding: 10px 20px;
+      background-color: orange;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="button"]:hover {
+      background-color: #7dc24b;
+    }
+    header {
+            background-color: #1BB193;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: auto; /* Pushes the search bar and user controls to the right */
+        }
+
+        .search-bar {
+            margin: 0 20px;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 8px 16px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .user-controls button {
+            margin-right: 10px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            color: #080808;
+            font-weight: 500;
+        }
+
+        .user-controls button:hover {
+            text-decoration: underline;
+        }
+
+        .notification-icon {
+            margin-left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        fieldset {
+            border: 1px solid #100f0f;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        #patientForm{
+          margin: 0 20px;
+        }
+        #res {
+          width: 30%;
+          height: 41vh;
+          border: none;
+          position: fixed;
+          left: 33%;
+          top: 25%;
+          background-color: #f0f0f0;
+          display: none; 
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+        }
+        #res:hover {
+          border-color: #333;
+        }
+
+        #Save {
+            padding: 10px 20px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 39%;
+            margin-left: 13%;
+            position: relative;
+            top: -12%;
+        }
+        #Save:hover {
+            background-color: #7dc24b;
+        }
+        #details {
+            padding: 10px 20px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 49%;
+            margin-left: 40%;
+            position: relative;
+            top: -107.2%;
+        }
+        #details:hover {
+            background-color: #7dc24b;
+        }
+        #res label {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #11aa8b;
+        }
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Cardio Thoracic</div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button type="submit">Search</button>
+    </div>
+    <div class="user-controls">
+        <button style=" text-decoration: none;">Login</button>
+        <button style=" text-decoration: none;">Signup</button>
+    </div>
+</header>
+<!-- <div id="res"><label>Results:</label>
+  
+  <button type="button" id="Save">Save</button>
+  <button type="button" id="details">Enter another details</button>
+</div> -->
+    <h1 style="margin-top: 50px;">Patient Information</h1>
+    <form id="patientForm" action="{{url_for('predict')}}" method="post" onsubmit="fun()">
+      <h2>{{ prediction_text }}</h2>
+      <fieldset>
+        <legend>Demographic</legend>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" id="Age" name="Age" placeholder="Enter Age">
+        </div>
+        <div class="form-group">
+    <label for="Gender">Gender:</label>
+    <select id="Gender" name="Gender">
+        <option value="" disabled selected>Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+</div>
+
+        <div class="form-group">
+          <label for="weight">Weight (kg):</label>
+          <input type="number" id="weight" name="weight" placeholder="Enter Weight">
+        </div>
+      </fieldset>
+  
+      <fieldset>
+        <legend>Comorbid Diseases</legend>
+        <div class="form-group">
+            <label for="dm">DM:</label>
+            <select id="dm" name="dm">
+              <option value="" disabled selected>Select an option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="htn">HTN:</label>
+            <select id="htn" name="htn">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pvd">PVD:</label>
+            <select id="pvd" name="pvd">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="copd">COPD:</label>
+            <select id="copd" name="copd">
+              <option value=""></option>  
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cvd">CVD:</label>
+            <select id="cvd" name="cvd">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="chf">CHF:</label>
+            <select id="chf" name="chf">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cad">CAD:</label>
+            <select id="cad" name="cad">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ami">AMI:</label>
+            <select id="ami" name="ami">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pre_renal_failure">Preoperative Renal Failure:</label>
+            <select id="pre_renal_failure" name="pre_renal_failure">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="infectious_endocarditis">Infectious Endocarditis:</label>
+            <select id="infectious_endocarditis" name="infectious_endocarditis">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="stroke">Stroke:</label>
+            <select id="stroke" name="stroke">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cardiogenic_shock">Cardiogenic Shock:</label>
+            <select id="cardiogenic_shock" name="cardiogenic_shock">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="lvef_greater_30">LVEF &gt; 30%:</label>
+            <select id="lvef_greater_30" name="lvef_greater_30">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="lvef_less_30">LVEF &lt; 30%:</label>
+            <select id="lvef_less_30" name="lvef_less_30">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="smoking">Smoking:</label>
+            <select id="smoking" name="smoking">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="alcohol">Alcohol:</label>
+            <select id="alcohol" name="alcohol">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="hyperuricemia">Hyperuricemia:</label>
+            <select id="hyperuricemia" name="hyperuricemia">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+    </fieldset>
+  
+      <fieldset>
+        <legend>Pre-Operative</legend>
+        <div class="form-group">
+          <label for="hemoglobin_pre">Hemoglobin (g/dl):</label>
+          <input type="number" id="hemoglobin_pre" name="hemoglobin_pre" min="0" placeholder="Male: 13.8 to 17.2,Female: 12.1 to 15.1">
+        </div>
+        <div class="form-group">
+          <label for="platelet_pre">Platelet (lakhs/cumm):</label>
+          <input type="number" id="platelet_pre" name="platelet_pre" min="0" placeholder="150,000 to 450,000">
+        </div>
+        <div class="form-group">
+          <label for="albumin_pre">Albumin (g/dl):</label>
+          <input type="number" id="albumin_pre" name="albumin_pre" min="0" placeholder="3.4 to 5.4">
+        </div>
+        <div class="form-group">
+          <label for="bilirubin_pre">Bilirubin (mg/dl):</label>
+          <input type="number" id="bilirubin_pre" name="bilirubin_pre" min="0" placeholder="Total bilirubin: 0.1 to 1.2,Direct bilirubin: 0.1 to 0.3">
+        </div>
+        <div class="form-group">
+          <label for="urea_pre">Urea (mg/dl):</label>
+          <input type="number" id="urea_pre" name="urea_pre" min="0" placeholder="8 to 20">
+        </div>
+        <div class="form-group">
+          <label for="ser_creatinine_pre">Serum Creatinine (mg/dl):</label>
+          <input type="number" id="ser_creatinine_pre" name="ser_creatinine_pre" min="0" placeholder="Male: 0.6 to 1.2 ,Female: 0.5 to 1.1">
+        </div>
+        <div class="form-group">
+          <label for="sodium_pre">Sodium (mmol/L):</label>
+          <input type="number" id="sodium_pre" name="sodium_pre" min="0" placeholder="135 to 145">
+        </div>
+        <div class="form-group">
+          <label for="potassium_pre">Potassium (mmol/L):</label>
+          <input type="number" id="potassium_pre" name="potassium_pre" min="0" placeholder="3.5 to 5.0">
+        </div>
+      </fieldset>
+
+      <fieldset>
+          <legend>eGFR</legend>
+        <div class="form-group">
+          <label for="egfr_greater_90_pre">eGFR:</label>
+          <input type="number" id="egfr_greater_90_pre" name="egfr_greater_90_pre" min="0" placeholder="> 90(ml/min/m2)">
+        </div>
+        <div class="form-group">
+          <label for="egfr_less_90_pre">eGFR:</label>
+          <input type="number" id="egfr_less_90_pre" name="egfr_less_90_pre" min="0" placeholder="< 90(ml/min/m2)">
+        </div>
+      </fieldset>
+
+        <fieldset>
+          <legend>LONG TERM TREATMENT</legend>
+        <div class="form-group">
+          <label for="beta_blockers_pre">Beta-Blockers:</label>
+          <input type="number" id="beta_blockers_pre" name="beta_blockers_pre" min="0">
+        </div>
+        <div class="form-group">
+          <label for="ccb_pre">CCB:</label>
+          <input type="number" id="ccb_pre" name="ccb_pre" min="0">
+        </div>
+        <div class="form-group">
+          <label for="diuretics_pre">Diuretics:</label>
+          <input type="number" id="diuretics_pre" name="diuretics_pre" min="0">
+        </div>
+        <div class="form-group">
+          <label for="ace_inhibitors_pre">ACE Inhibitors:</label>
+          <input type="number" id="ace_inhibitors_pre" name="ace_inhibitors_pre" min="0">
+        </div>
+      </fieldset>
+  
+      <fieldset>
+        <legend>Post-Operative</legend>
+        <div class="form-group">
+          <label for="hemoglobin_post">Hemoglobin (g/dl):</label>
+          <input type="number" id="hemoglobin_post" name="hemoglobin_post" min="0">
+        </div>
+        <div class="form-group">
+          <label for="platelet_post">Platelet (lakhs/cumm):</label>
+          <input type="number" id="platelet_post" name="platelet_post" min="0">
+        </div>
+        <div class="form-group">
+          <label for="albumin_post">Albumin (g/dl):</label>
+          <input type="number" id="albumin_post" name="albumin_post" min="0">
+        </div>
+        <div class="form-group">
+          <label for="bilirubin_post">Bilirubin (mg/dl):</label>
+          <input type="number" id="bilirubin_post" name="bilirubin_post" min="0">
+        </div>
+        <div class="form-group">
+          <label for="urea_post">Urea (mg/dl):</label>
+          <input type="number" id="urea_post" name="urea_post" min="0">
+        </div>
+        <div class="form-group">
+          <label for="ser_creatinine_post">Serum Creatinine (mg/dl):</label>
+          <input type="number" id="ser_creatinine_post" name="ser_creatinine_post" min="0">
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>eGFR</legend>
+        <div class="form-group">
+          <label for="egfr_greater_90_post">eGFR:</label>
+          <input type="number" id="egfr_greater_90_post" name="egfr_greater_90_post" min="0" placeholder="> 90(ml/min/m2)">
+        </div>
+        <div class="form-group">
+          <label for="egfr_less_90_post">eGFR:</label>
+          <input type="number" id="egfr_less_90_post" name="egfr_less_90_post" min="0" placeholder="< 90(ml/min/m2)">
+        </div>
+        <div class="form-group">
+          <label for="sodium_post">Sodium (mmol/L):</label>
+          <input type="number" id="sodium_post" name="sodium_post" min="0" placeholder="135 - 145">
+        </div>
+        <div class="form-group">
+          <label for="bicarbonate_post">Bicarbonate (mmol/L):</label>
+          <input type="number" id="bicarbonate_post" name="bicarbonate_post" min="0" placeholder="22 - 28">
+        </div>
+        <div class="form-group">
+          <label for="potassium_post">Potassium (mmol/L):</label>
+          <input type="number" id="potassium_post" name="potassium_post" min="0" placeholder="3.5 - 5.0">
+        </div>
+        <div class="form-group">
+          <label for="bilirubin_post_2">Bilirubin (mg/dl):</label>
+          <input type="number" id="bilirubin_post_2" name="bilirubin_post_2" min="0" placeholder="Total bilirubin: 0.1 to 1.2 mg/dL ,Direct bilirubin: 0.1 to 0.3 mg/dL">
+        </div>
+      </fieldset>
+      <fieldset>
+          <legend>URINE OUTPUT </legend>
+        <div class="form-group">
+          <label for="day_1_input_output">Day 1 Input/Output:</label>
+          <input type="number" id="day_1_input_output" name="day_1_input_output" min="0">
+        </div>
+        <div class="form-group">
+          <label for="day_2_input_output">Day 2 Input/Output:</label>
+          <input type="number" id="day_2_input_output" name="day_2_input_output" min="0">
+        </div>
+        <div class="form-group">
+          <label for="day_3_input_output">Day 3 Input/Output:</label>
+          <input type="number" id="day_3_input_output" name="day_3_input_output" min="0">
+        </div>
+        <div class="form-group">
+          <label for="day_4_input_output">Day 4 Input/Output:</label>
+          <input type="number" id="day_4_input_output" name="day_4_input_output" min="0">
+        </div>
+        <div class="form-group">
+          <label for="day_5_input_output">Day 5 Input/Output:</label>
+          <input type="number" id="day_5_input_output" name="day_5_input_output" min="0">
+        </div>
+        <div class="form-group">
+          <label for="day_6_input_output">Day 6 Input/Output:</label>
+          <input type="number" id="day_6_input_output" name="day_6_input_output" min="0">
+        </div>
+        <div class="form-group">
+          <label for="day_7_input_output">Day 7 Input/Output:</label>
+          <input type="number" id="day_7_input_output" name="day_7_input_output" min="0">
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Inotropic Drugs</legend>
+        <div class="form-group">
+          <label for="dopamine">DOPAMINE (ml/hr):</label>
+          <input type="number" id="dopamine" name="dopamine" min="0">
+        </div>
+        <div class="form-group">
+          <label for="adrenaline">ADRENALINE (ml/hr):</label>
+          <input type="number" id="adrenaline" name="adrenaline" min="0">
+        </div>
+        <div class="form-group">
+          <label for="noradrenaline">NON-ADRENALINE (ml/hr):</label>
+          <input type="number" id="noradrenaline" name="noradrenaline" min="0">
+        </div>
+        <div class="form-group">
+          <label for="vasopressin">VASOPRESSIN (ml/hr):</label>
+          <input type="number" id="vasopressin" name="vasopressin" min="0">
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <legend>Renal Replacement Therapy (RRT)</legend>
+        <div class="form-group">
+          <label for="rrt">RRT:</label>
+          <input type="text" id="rrt" name="rrt" placeholder="Enter RRT details">
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <legend>Type of Surgery</legend>
+        <div class="form-group">
+          <label for="cabg">CABG:</label>
+          <input type="text" id="cabg" name="cabg" placeholder="Enter CABG details">
+        </div>
+        <div class="form-group">
+          <label for="valvular_surgery">Valvular Surgery:</label>
+          <input type="text" id="valvular_surgery" name="valvular_surgery" placeholder="Enter valvular surgery details">
+        </div>
+        <div class="form-group">
+          <label for="asd_closure">ASD Closure:</label>
+          <input type="text" id="asd_closure" name="asd_closure" placeholder="Enter ASD closure details">
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Perfusion Data</legend>
+        <div class="form-group">
+          <label for="cpb_time">CPB (mins):</label>
+          <input type="number" id="cpb_time" name="cpb_time" min="0">
+        </div>
+        <div class="form-group">
+          <label for="x_clamp_time">X-CLAMP TIME (mins):</label>
+          <input type="number" id="x_clamp_time" name="x_clamp_time" min="0">
+        </div>
+        <div class="form-group">
+          <label for="surgery_duration">SURGERY DURATION (mins):</label>
+          <input type="number" id="surgery_duration" name="surgery_duration" min="0">
+        </div>
+      </fieldset>
+      
+      <fieldset>
+        <legend>Difference of Creatinine AKI</legend>
+        <div class="form-group">
+          <label for="creatinine_difference">Difference of Creatinine AKI:</label>
+          <input type="number" id="creatinine_difference" name="creatinine_difference" min="0">
+        </div>
+      </fieldset>
+      
+      <center><input type="submit" value="submit"></center>
+       <!-- <center> <button type="submit" onclick="fun()">Submit</button></center> -->
+       
+    </form>  
+    <script>
+      function fun(){
+        document.getElementById("res").style.display='block';
+      }
+    </script>  
+  </body>
+  </html>
